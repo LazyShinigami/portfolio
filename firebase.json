@@ -1,0 +1,39 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "ritesh-kumar-portfolio",
+          "appId": "1:1029198856490:android:f3611714bc25d86e1c9e53",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "ritesh-kumar-portfolio",
+          "configurations": {
+            "android": "1:1029198856490:android:f3611714bc25d86e1c9e53",
+            "ios": "1:1029198856490:ios:0b9468357461ac3f1c9e53",
+            "web": "1:1029198856490:web:52c5fdc87900a9751c9e53"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}
