@@ -271,67 +271,67 @@ class _TabletHomepageState extends State<TabletHomepage> {
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               // crafted with love msg
               // project tile
-              child: StreamBuilder(
-                stream: ProjectsManager().getProjectsFromFirebase(),
-                builder: (context, snapshot) {
-                  List<ProjectModel> projectSet = [];
-                  if (snapshot.hasData) {
-                    for (var data in snapshot.data.docs) {
-                      data = data.data() as Map<String, dynamic>;
-                      ProjectModel projectItem = ProjectModel(
-                        name: data['projectName'],
-                        desc: data['projectDesc'],
-                        githubLink: data['githubLink'],
-                        availablePlatforms: data['availablePlatforms'],
-                        toolsUsed: data['toolsUsed'],
-                        tags: data['tags'],
-                        projectIconURL: data['projectIconURL'],
-                        features: data['features'],
-                      );
-                      // print('---->> ${projectItem.name}');
-                      projectSet.add(projectItem);
-                    }
-                  }
-                  // return ProjectTileWidget();
-                  return Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Txt(
-                            'Crafted with Love',
-                            size: w * 0.05,
-                            spacing: 3,
-                            weight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      for (int i = 0; i < projectSet.length; i++)
-                        ProjectTileWidget(index: i, projectSet: projectSet),
-                      const SizedBox(height: 20),
 
-                      // All projects link
-                      InkWell(
-                        onTap: () {
-                          RouterClass().launchURL(
-                              'https://github.com/LazyShinigami?tab=repositories');
-                        },
-                        child: Txt(
-                          '  Click here to view all my projects on GitHub >  ',
-                          spacing: 2.5,
-                          wordSpacing: 5,
-                          size: (w * 0.02 > 12) ? 12 : w * 0.02,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                    ],
-                  );
-                },
-              ),
+              // child: StreamBuilder(
+              //   stream: ProjectsManager().getProjectsFromFirebase(),
+              //   builder: (context, snapshot) {
+              //     List<ProjectModel> projectSet = [];
+              //     if (snapshot.hasData) {
+              //       for (var data in snapshot.data.docs) {
+              //         data = data.data() as Map<String, dynamic>;
+              //         ProjectModel projectItem = ProjectModel(
+              //           name: data['projectName'],
+              //           desc: data['projectDesc'],
+              //           githubLink: data['githubLink'],
+              //           availablePlatforms: data['availablePlatforms'],
+              //           toolsUsed: data['toolsUsed'],
+              //           tags: data['tags'],
+              //           projectIconURL: data['projectIconURL'],
+              //           features: data['features'],
+              //         );
+              //         // print('---->> ${projectItem.name}');
+              //         projectSet.add(projectItem);
+              //       }
+              //     }
+              //     // return ProjectTileWidget();
+              //     return Column(
+              //       children: [
+              //         const SizedBox(height: 20),
+              //         Row(
+              //           mainAxisAlignment: MainAxisAlignment.end,
+              //           children: [
+              //             Txt(
+              //               'Crafted with Love',
+              //               size: w * 0.05,
+              //               spacing: 3,
+              //               weight: FontWeight.bold,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ],
+              //         ),
+              //         const SizedBox(height: 20),
+              //         for (int i = 0; i < projectSet.length; i++)
+              //           ProjectTileWidget(index: i, projectSet: projectSet),
+              //         const SizedBox(height: 20),
+              //         // All projects link
+              //         InkWell(
+              //           onTap: () {
+              //             RouterClass().launchURL(
+              //                 'https://github.com/LazyShinigami?tab=repositories');
+              //           },
+              //           child: Txt(
+              //             '  Click here to view all my projects on GitHub >  ',
+              //             spacing: 2.5,
+              //             wordSpacing: 5,
+              //             size: (w * 0.02 > 12) ? 12 : w * 0.02,
+              //             fontStyle: FontStyle.italic,
+              //           ),
+              //         ),
+              //         const SizedBox(height: 20),
+              //       ],
+              //     );
+              //   },
+              // ),
             ),
 
             // Skills Section
@@ -355,84 +355,84 @@ class _TabletHomepageState extends State<TabletHomepage> {
             const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: StreamBuilder(
-                stream: SkillsManager().getSkillsFromFirebase(),
-                builder: (context, snapshot) {
-                  List<SkillModel> skillSet = [];
-                  if (snapshot.hasData) {
-                    for (var data in snapshot.data.docs) {
-                      data = data.data() as Map<String, dynamic>;
-                      SkillModel skillItem = SkillModel(
-                        name: data['skillName'],
-                        level: data['skillLevel'],
-                        category: data['skillCategory'],
-                      );
-                      // print('---->> ${skillItem.name}');
-                      skillSet.add(skillItem);
-                    }
-                  }
-                  // RenderBox innerSkillSection =
-                  //     skillsSectionInnerKey.currentContext?.findRenderObject()
-                  // as RenderBox;
-                  // Size innerSkillSectionSize = ;
-                  return Stack(
-                    children: [
-                      Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Center(
-                          child: Icon(
-                            Icons.settings_suggest_rounded,
-                            size: (w * 0.25 < 200) ? w * 0.25 : 200,
-                            color: const Color(0x559E9E9E),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        key: skillsSectionInnerKey,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          // Column I - Languages, Core Concepts, Version Control
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SkillSectionByType(
-                                  category: 'Languages', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Core Concepts',
-                                  skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Ongoing...', skillSet: skillSet),
-                            ],
-                          ),
+              // child: StreamBuilder(
+              //   stream: SkillsManager().getSkillsFromFirebase(),
+              //   builder: (context, snapshot) {
+              //     List<SkillModel> skillSet = [];
+              //     if (snapshot.hasData) {
+              //       for (var data in snapshot.data.docs) {
+              //         data = data.data() as Map<String, dynamic>;
+              //         SkillModel skillItem = SkillModel(
+              //           name: data['skillName'],
+              //           level: data['skillLevel'],
+              //           category: data['skillCategory'],
+              //         );
+              //         // print('---->> ${skillItem.name}');
+              //         skillSet.add(skillItem);
+              //       }
+              //     }
+              //     // RenderBox innerSkillSection =
+              //     //     skillsSectionInnerKey.currentContext?.findRenderObject()
+              //     // as RenderBox;
+              //     // Size innerSkillSectionSize = ;
+              //     return Stack(
+              //       children: [
+              //         Positioned(
+              //           top: 0,
+              //           bottom: 0,
+              //           left: 0,
+              //           right: 0,
+              //           child: Center(
+              //             child: Icon(
+              //               Icons.settings_suggest_rounded,
+              //               size: (w * 0.25 < 200) ? w * 0.25 : 200,
+              //               color: const Color(0x559E9E9E),
+              //             ),
+              //           ),
+              //         ),
+              //         Row(
+              //           key: skillsSectionInnerKey,
+              //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //           children: [
+              //             // Column I - Languages, Core Concepts, Version Control
+              //             Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               mainAxisAlignment: MainAxisAlignment.start,
+              //               children: [
+              //                 SkillSectionByType(
+              //                     category: 'Languages', skillSet: skillSet),
+              //                 const SizedBox(height: 20),
+              //                 SkillSectionByType(
+              //                     category: 'Core Concepts',
+              //                     skillSet: skillSet),
+              //                 const SizedBox(height: 20),
+              //                 SkillSectionByType(
+              //                     category: 'Ongoing...', skillSet: skillSet),
+              //               ],
+              //             ),
 
-                          // Column II - Front-end, Back-end, Ongoing
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SkillSectionByType(
-                                  category: 'Front-End', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Back-End', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Version Control',
-                                  skillSet: skillSet),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                },
-              ),
+              //             // Column II - Front-end, Back-end, Ongoing
+              //             Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               mainAxisAlignment: MainAxisAlignment.start,
+              //               children: [
+              //                 SkillSectionByType(
+              //                     category: 'Front-End', skillSet: skillSet),
+              //                 const SizedBox(height: 20),
+              //                 SkillSectionByType(
+              //                     category: 'Back-End', skillSet: skillSet),
+              //                 const SizedBox(height: 20),
+              //                 SkillSectionByType(
+              //                     category: 'Version Control',
+              //                     skillSet: skillSet),
+              //               ],
+              //             ),
+              //           ],
+              //         ),
+              //       ],
+              //     );
+              //   },
+              // ),
             ),
             const SizedBox(height: 50),
 

@@ -157,9 +157,9 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                             ],
                           ),
                           for (int i = 0;
-                              i < widget.project.availablePlatforms.length;
+                              i < widget.project.availablePlatforms!.length;
                               i++)
-                            Txt('- ${widget.project.availablePlatforms[i]}',
+                            Txt('- ${widget.project.availablePlatforms![i]}',
                                 size: 18),
                         ],
                       ),

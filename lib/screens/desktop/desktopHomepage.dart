@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +13,7 @@ import 'package:portfolio/screens/desktop/desktopProjectPage.dart';
 import 'package:portfolio/widgets/drawerIcon.dart';
 import 'package:portfolio/widgets/endDrawer.dart';
 import 'package:portfolio/widgets/shadowButton.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class DesktopHomepage extends StatefulWidget {
@@ -36,6 +39,9 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
   final GlobalKey projectsSectionKey = GlobalKey();
   final GlobalKey skillsSectionKey = GlobalKey();
   final GlobalKey contactMeSectionKey = GlobalKey();
+
+  final projectsList = ProjectsManager().projects;
+  final skillsList = Skillsmanager().skills;
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +94,13 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                           ),
                           // about
                           CustomAnimatedText(
-                            'Flutter Developer,',
+                            'AI & ML Developer,',
                             size: 40,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
                           CustomAnimatedText(
-                            'AI & ML Enthusiast',
+                            'Flutter Developer',
                             size: 40,
                             spacing: 2,
                             weight: FontWeight.bold,
@@ -102,15 +108,15 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                           // interests
                           const SizedBox(height: 15),
                           Txt(
-                            '~ passionate mobile app developer',
+                            '~ AI / ML enthusiast',
                             spacing: 2,
                           ),
                           Txt(
-                            '~ avid reader',
+                            '~ mobile app developer',
                             spacing: 2,
                           ),
                           Txt(
-                            '~ tech enthusiast',
+                            '~ solving problems with code',
                             spacing: 2,
                           ),
                           // view all projects button
@@ -206,12 +212,11 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                 ),
                                 duration: const Duration(milliseconds: 200),
                                 child: InkWell(
-                                  onTap: () async {
-                                    // getting the  download url for the resume
-                                    String url = await FirebaseStorage.instance
-                                        .ref('Ritesh Kumar - Resume.pdf')
-                                        .getDownloadURL();
-                                    RouterClass().launchURL(url);
+                                  onTap: () {
+                                    html.window.open(
+                                      'Ritesh_Kumar_Resume.pdf',
+                                      '_blank',
+                                    );
                                   },
                                   child: Text(
                                     '> click here to download my resume',
@@ -239,65 +244,39 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
               // crafted with love msg
-              // project tile
-              child: StreamBuilder(
-                stream: ProjectsManager().getProjectsFromFirebase(),
-                builder: (context, snapshot) {
-                  List<ProjectModel> projectSet = [];
-                  if (snapshot.hasData) {
-                    for (var data in snapshot.data.docs) {
-                      data = data.data() as Map<String, dynamic>;
-                      ProjectModel projectItem = ProjectModel(
-                        name: data['projectName'],
-                        desc: data['projectDesc'],
-                        githubLink: data['githubLink'],
-                        availablePlatforms: data['availablePlatforms'],
-                        toolsUsed: data['toolsUsed'],
-                        tags: data['tags'],
-                        projectIconURL: data['projectIconURL'],
-                        features: data['features'],
-                      );
-                      // print('---->> ${projectItem.name}');
-                      projectSet.add(projectItem);
-                    }
-                  }
-                  // return ProjectTileWidget();
-                  return Column(
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Txt(
-                            'Crafted with Love',
-                            size: 55,
-                            spacing: 3,
-                            weight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ],
+                      Txt(
+                        'Crafted with Love',
+                        size: 55,
+                        spacing: 3,
+                        weight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
                       ),
-                      const SizedBox(height: 20),
-                      for (int i = 0; i < projectSet.length; i++)
-                        ProjectTileWidget(index: i, projectSet: projectSet),
-                      const SizedBox(height: 20),
-                      InkWell(
-                        onTap: () {
-                          RouterClass().launchURL(
-                              'https://github.com/LazyShinigami?tab=repositories');
-                        },
-                        child: Txt(
-                          '  Click here to view all my projects on GitHub >  ',
-                          spacing: 2.5,
-                          wordSpacing: 5,
-                          size: 14,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
                     ],
-                  );
-                },
+                  ),
+                  SizedBox(height: 20),
+                  for (int i = 0; i < projectsList.length; i++)
+                    ProjectTileWidget(index: i, projectSet: projectsList),
+                  const SizedBox(height: 20),
+                  InkWell(
+                    onTap: () {
+                      RouterClass().launchURL(
+                          'https://github.com/LazyShinigami?tab=repositories');
+                    },
+                    child: Txt(
+                      '  Click here to view all my projects on GitHub >  ',
+                      spacing: 2.5,
+                      wordSpacing: 5,
+                      size: 14,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
               ),
             ),
 
@@ -324,102 +303,60 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
             Container(
               padding:
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-              child: StreamBuilder(
-                stream: SkillsManager().getSkillsFromFirebase(),
-                builder: (context, snapshot) {
-                  List<SkillModel> skillSet = [];
-                  if (snapshot.hasData) {
-                    for (var data in snapshot.data.docs) {
-                      data = data.data() as Map<String, dynamic>;
-                      SkillModel skillItem = SkillModel(
-                        name: data['skillName'],
-                        level: data['skillLevel'],
-                        category: data['skillCategory'],
-                      );
-                      // print('---->> ${skillItem.name}');
-                      skillSet.add(skillItem);
-                    }
-                  }
-                  return Stack(
-                    children: [
-                      const Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: Center(
-                          child: Icon(
-                            Icons.settings_suggest_rounded,
-                            size: 200,
-                            color: Color.fromARGB(86, 158, 158, 158),
-                          ),
-                        ),
+              child: Stack(
+                children: [
+                  const Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: Icon(
+                        Icons.settings_suggest_rounded,
+                        size: 200,
+                        color: Color.fromARGB(86, 158, 158, 158),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // Column I - Languages, Core Concepts, Version Control
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Column I - Languages, Core Concepts, Version Control
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SkillSectionByType(
-                                  category: 'Languages', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Core Concepts',
-                                  skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Ongoing...', skillSet: skillSet),
-                            ],
-                          ),
+                          SkillSectionByType(
+                              category: 'Languages', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Core Concepts', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Ongoing...', skillSet: skillsList),
+                        ],
+                      ),
 
-                          // Column II - Front-end, Back-end, Ongoing
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SkillSectionByType(
-                                  category: 'Front-End', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Back-End', skillSet: skillSet),
-                              const SizedBox(height: 20),
-                              SkillSectionByType(
-                                  category: 'Version Control',
-                                  skillSet: skillSet),
-                            ],
-                          ),
+                      // Column II - Front-end, Back-end, Ongoing
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SkillSectionByType(
+                              category: 'Front-End', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Back-End', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Version Control',
+                              skillSet: skillsList),
                         ],
                       ),
                     ],
-                  );
-                },
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 50),
-
-            // Tools I Use Section
-            // const SizedBox(height: 20),
-            // Padding(
-            //   padding:
-            //       const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     children: [
-            //       Txt(
-            //         'Tools I Use to Do Magic',
-            //         size: 55,
-            //         spacing: 3,
-            //         weight: FontWeight.bold,
-            //         fontStyle: FontStyle.italic,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // VS Code
-            // Chrome
-            // All Powerful CLI
-            // Ubuntu
 
             // E-mail me section
             EmailSection(key: contactMeSectionKey),
@@ -636,7 +573,8 @@ class ProjectTileWidget extends StatelessWidget {
           Stack(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                clipBehavior: Clip.hardEdge,
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 width: w * 0.4,
                 height: w * 0.11,
                 decoration: BoxDecoration(
@@ -649,10 +587,35 @@ class ProjectTileWidget extends StatelessWidget {
                     SizedBox(
                       height: w * 0.175,
                       width: w * 0.175,
-                      child: Image.network(
-                        projectSet[index].projectIconURL,
-                        fit: BoxFit.cover,
-                      ),
+                      // CHANGES HERE ---------------------------
+                      // child: Image.network(
+                      //   projectSet[index].projectIconURL,
+                      //   fit: BoxFit.cover,
+                      // ),
+                      child: (projectSet[index].rotateIcon!)
+                          ? Transform.rotate(
+                              angle: -10 * 3.141592653589793 / 180,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  projectSet[index].projectIconURL,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Image.asset(
+                                projectSet[index].projectIconURL,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                     ),
                   ],
                 ),

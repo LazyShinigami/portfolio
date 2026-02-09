@@ -156,10 +156,10 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                         ],
                       ),
                       for (int i = 0;
-                          i < widget.project.availablePlatforms.length;
+                          i < widget.project.availablePlatforms!.length;
                           i++)
                         Txt(
-                          '- ${widget.project.availablePlatforms[i]}',
+                          '- ${widget.project.availablePlatforms![i]}',
                           size: 14,
                         ),
 
