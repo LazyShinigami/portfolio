@@ -32,6 +32,9 @@ class _MobileHomepageState extends State<MobileHomepage> {
     );
   }
 
+  final projectsList = ProjectsManager().projects;
+  final skillsList = Skillsmanager().skills;
+
   final GlobalKey introSectionKey = GlobalKey();
   final GlobalKey projectsSectionKey = GlobalKey();
   final GlobalKey skillsSectionKey = GlobalKey();
@@ -247,153 +250,99 @@ class _MobileHomepageState extends State<MobileHomepage> {
             ),
 
             // Projects Section
-            Container(
+            Padding(
               key: projectsSectionKey,
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               // crafted with love msg
-              // project tile
-
-              // child: StreamBuilder(
-              //   stream: ProjectsManager().getProjectsFromFirebase(),
-              //   builder: (context, snapshot) {
-              //     List<ProjectModel> projectSet = [];
-              //     if (snapshot.hasData) {
-              //       for (var data in snapshot.data.docs) {
-              //         data = data.data() as Map<String, dynamic>;
-              //         ProjectModel projectItem = ProjectModel(
-              //           name: data['projectName'],
-              //           desc: data['projectDesc'],
-              //           githubLink: data['githubLink'],
-              //           availablePlatforms: data['availablePlatforms'],
-              //           toolsUsed: data['toolsUsed'],
-              //           tags: data['tags'],
-              //           projectIconURL: data['projectIconURL'],
-              //           features: data['features'],
-              //         );
-              //         // print('---->> ${projectItem.name}');
-              //         projectSet.add(projectItem);
-              //       }
-              //     }
-              //     // return ProjectTileWidget();
-              //     return Column(
-              //       children: [
-              //         const SizedBox(height: 50),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.end,
-              //           children: [
-              //             Txt(
-              //               'Crafted with Love',
-              //               size: 20,
-              //               spacing: 3,
-              //               weight: FontWeight.bold,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ],
-              //         ),
-              //         const SizedBox(height: 20),
-              //         for (int i = 0; i < projectSet.length; i++)
-              //           ProjectTileWidget(index: i, projectSet: projectSet),
-              //         const SizedBox(height: 20),
-              //         // All projects link
-              //         InkWell(
-              //           onTap: () {
-              //             RouterClass().launchURL(
-              //                 'https://github.com/LazyShinigami?tab=repositories');
-              //           },
-              //           child: Txt(
-              //             '  Click here to view all my projects on GitHub >  ',
-              //             spacing: 1.25,
-              //             wordSpacing: 2,
-              //             size: 10,
-              //             fontStyle: FontStyle.italic,
-              //           ),
-              //         ),
-              //         const SizedBox(height: 20),
-              //       ],
-              //     );
-              //   },
-              // ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Txt(
+                        'Crafted with Love',
+                        size: 20,
+                        spacing: 2.5,
+                        weight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  for (int i = 0; i < projectsList.length; i++)
+                    ProjectTileWidget(index: i, projectSet: projectsList),
+                  const SizedBox(height: 20),
+                  InkWell(
+                    onTap: () {
+                      RouterClass().launchURL(
+                          'https://github.com/LazyShinigami?tab=repositories');
+                    },
+                    child: Txt(
+                      '  Click here to view all my projects on GitHub >  ',
+                      spacing: 1,
+                      wordSpacing: 2,
+                      size: 8,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
 
             // Skills Section
-            Padding(
-              key: skillsSectionKey,
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Stack(
                 children: [
-                  Txt(
-                    'Skills in My Backpack',
-                    size: 20,
-                    spacing: 2.5,
-                    weight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
+                  const Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: Icon(
+                        Icons.settings_suggest_rounded,
+                        size: 200,
+                        color: Color.fromARGB(86, 158, 158, 158),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Txt(
+                        'Skills in My Backpack',
+                        size: 20,
+                        spacing: 2.5,
+                        weight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Languages', skillSet: skillsList),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Core Concepts', skillSet: skillsList),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Ongoing...', skillSet: skillsList),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Front-End', skillSet: skillsList),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Back-End', skillSet: skillsList),
+                      const SizedBox(height: 20),
+                      SkillSectionByType(
+                          category: 'Version Control', skillSet: skillsList),
+                    ],
                   ),
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              // child: StreamBuilder(
-              //   stream: SkillsManager().getSkillsFromFirebase(),
-              //   builder: (context, snapshot) {
-              //     List<SkillModel> skillSet = [];
-              //     if (snapshot.hasData) {
-              //       for (var data in snapshot.data.docs) {
-              //         data = data.data() as Map<String, dynamic>;
-              //         SkillModel skillItem = SkillModel(
-              //           name: data['skillName'],
-              //           level: data['skillLevel'],
-              //           category: data['skillCategory'],
-              //         );
-              //         // print('---->> ${skillItem.name}');
-              //         skillSet.add(skillItem);
-              //       }
-              //     }
 
-              //     return Stack(
-              //       children: [
-              //         Positioned(
-              //           top: 0,
-              //           bottom: 0,
-              //           left: 0,
-              //           right: 0,
-              //           child: Center(
-              //             child: Icon(
-              //               Icons.settings_suggest_rounded,
-              //               size: (w * 0.45 < 200) ? w * 0.45 : 200,
-              //               color: const Color(0x559E9E9E),
-              //             ),
-              //           ),
-              //         ),
-              //         Column(
-              //           key: skillsSectionInnerKey,
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           mainAxisAlignment: MainAxisAlignment.start,
-              //           children: [
-              //             SkillSectionByType(
-              //                 category: 'Languages', skillSet: skillSet),
-              //             const SizedBox(height: 20),
-              //             SkillSectionByType(
-              //                 category: 'Front-End', skillSet: skillSet),
-              //             const SizedBox(height: 20),
-              //             SkillSectionByType(
-              //                 category: 'Back-End', skillSet: skillSet),
-              //             SkillSectionByType(
-              //                 category: 'Core Concepts', skillSet: skillSet),
-              //             const SizedBox(height: 20),
-              //             SkillSectionByType(
-              //                 category: 'Version Control', skillSet: skillSet),
-              //             const SizedBox(height: 20),
-              //             SkillSectionByType(
-              //                 category: 'Ongoing...', skillSet: skillSet),
-              //           ],
-              //         ),
-              //       ],
-              //     );
-              //   },
-              // ),
-            ),
             const SizedBox(height: 50),
 
             // Tools I Use Section
@@ -607,7 +556,7 @@ class _EmailSectionState extends State<EmailSection> {
                   RouterClass().launchURL('https://ye-lwin-oo.vercel.app/');
                 },
                 child: Txt(
-                  '   The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
+                  ' The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
                   color: const Color(0x709E9E9E),
                   size: 9,
                 ),
@@ -636,11 +585,13 @@ class ProjectTileWidget extends StatelessWidget {
           if (index % 2 != 0) const SizedBox(width: 15),
           // graphics section
           Stack(
+            alignment: Alignment.center,
             children: [
               Container(
+                clipBehavior: Clip.hardEdge,
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 width: w * 0.4,
-                height: w * 0.18,
+                height: w * 0.25,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFFc6d3b7),
@@ -651,18 +602,38 @@ class ProjectTileWidget extends StatelessWidget {
                     SizedBox(
                       height: w * 0.3,
                       width: w * 0.3,
-                      child: Image.network(
-                        projectSet[index].projectIconURL,
-                        fit: BoxFit.cover,
-                      ),
+                      child: (projectSet[index].rotateIcon!)
+                          ? Transform.rotate(
+                              angle: -10 * 3.141592653589793 / 180,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  projectSet[index].projectIconURL,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Image.asset(
+                                projectSet[index].projectIconURL,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                     ),
                   ],
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 5),
                 width: w * 0.4,
-                height: w * 0.18,
+                height: w * 0.25,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0x32C6D3B7),
@@ -686,64 +657,61 @@ class ProjectTileWidget extends StatelessWidget {
           // project details
           const SizedBox(width: 20),
           Expanded(
-            child: Container(
-              height: w * 0.18,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  // title
-                  Txt(
-                    projectSet[index].name,
-                    size: 16,
-                    spacing: 2,
-                    weight: FontWeight.bold,
-                  ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                // title
+                Txt(
+                  projectSet[index].name,
+                  size: 13,
+                  spacing: 2,
+                  weight: FontWeight.bold,
+                ),
 
-                  // // desc
-                  // Txt(
-                  //   projectSet[index].desc,
-                  //   maxLines: 2,
-                  //   spacing: 1,
-                  //   overflow: TextOverflow.ellipsis,
-                  //   size: 15.78,
-                  //   align: TextAlign.right,
-                  // ),
+                // // desc
+                // Txt(
+                //   projectSet[index].desc,
+                //   maxLines: 2,
+                //   spacing: 1,
+                //   overflow: TextOverflow.ellipsis,
+                //   size: 15.78,
+                //   align: TextAlign.right,
+                // ),
 
-                  // view project button
-                  const SizedBox(height: 2.5),
-                  ShadowButton(
-                    width: 100,
-                    offset: 5,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          RouterClass().createRoute(
-                            nextScreen: MobileProjectPage(
-                              project: projectSet[index],
-                            ),
+                // view project button
+                const SizedBox(height: 2.5),
+                ShadowButton(
+                  width: 100,
+                  offset: 5,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        RouterClass().createRoute(
+                          nextScreen: MobileProjectPage(
+                            project: projectSet[index],
                           ),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.black),
-                          color: const Color(0xFFf3f4ee),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Txt('View Project', size: 10, spacing: 2),
-                            Icon(Icons.arrow_forward,
-                                size: (w * 0.02 + 3 > 14) ? 14 : w * 0.02 + 3),
-                          ],
-                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1, color: Colors.black),
+                        color: const Color(0xFFf3f4ee),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Txt('View Project', size: 10, spacing: 2),
+                          Icon(Icons.arrow_forward,
+                              size: (w * 0.02 + 3 > 14) ? 14 : w * 0.02 + 3),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -766,7 +734,7 @@ class _SkillSectionByTypeState extends State<SkillSectionByType> {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
+    // double w = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -839,7 +807,7 @@ class TerminalWindow extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      height: 200,
+      // height: 200,
       width: w * 0.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

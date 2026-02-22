@@ -50,6 +50,9 @@ class _TabletHomepageState extends State<TabletHomepage> {
     // });
   }
 
+  final projectsList = ProjectsManager().projects;
+  final skillsList = Skillsmanager().skills;
+
   final GlobalKey skillsSectionInnerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -272,66 +275,40 @@ class _TabletHomepageState extends State<TabletHomepage> {
               // crafted with love msg
               // project tile
 
-              // child: StreamBuilder(
-              //   stream: ProjectsManager().getProjectsFromFirebase(),
-              //   builder: (context, snapshot) {
-              //     List<ProjectModel> projectSet = [];
-              //     if (snapshot.hasData) {
-              //       for (var data in snapshot.data.docs) {
-              //         data = data.data() as Map<String, dynamic>;
-              //         ProjectModel projectItem = ProjectModel(
-              //           name: data['projectName'],
-              //           desc: data['projectDesc'],
-              //           githubLink: data['githubLink'],
-              //           availablePlatforms: data['availablePlatforms'],
-              //           toolsUsed: data['toolsUsed'],
-              //           tags: data['tags'],
-              //           projectIconURL: data['projectIconURL'],
-              //           features: data['features'],
-              //         );
-              //         // print('---->> ${projectItem.name}');
-              //         projectSet.add(projectItem);
-              //       }
-              //     }
-              //     // return ProjectTileWidget();
-              //     return Column(
-              //       children: [
-              //         const SizedBox(height: 20),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.end,
-              //           children: [
-              //             Txt(
-              //               'Crafted with Love',
-              //               size: w * 0.05,
-              //               spacing: 3,
-              //               weight: FontWeight.bold,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ],
-              //         ),
-              //         const SizedBox(height: 20),
-              //         for (int i = 0; i < projectSet.length; i++)
-              //           ProjectTileWidget(index: i, projectSet: projectSet),
-              //         const SizedBox(height: 20),
-              //         // All projects link
-              //         InkWell(
-              //           onTap: () {
-              //             RouterClass().launchURL(
-              //                 'https://github.com/LazyShinigami?tab=repositories');
-              //           },
-              //           child: Txt(
-              //             '  Click here to view all my projects on GitHub >  ',
-              //             spacing: 2.5,
-              //             wordSpacing: 5,
-              //             size: (w * 0.02 > 12) ? 12 : w * 0.02,
-              //             fontStyle: FontStyle.italic,
-              //           ),
-              //         ),
-              //         const SizedBox(height: 20),
-              //       ],
-              //     );
-              //   },
-              // ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Txt(
+                        'Crafted with Love',
+                        size: w * 0.05,
+                        spacing: 3,
+                        weight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  for (int i = 0; i < projectsList.length; i++)
+                    ProjectTileWidget(index: i, projectSet: projectsList),
+                  const SizedBox(height: 20),
+                  InkWell(
+                    onTap: () {
+                      RouterClass().launchURL(
+                          'https://github.com/LazyShinigami?tab=repositories');
+                    },
+                    child: Txt(
+                      '  Click here to view all my projects on GitHub >  ',
+                      spacing: 2.5,
+                      wordSpacing: 5,
+                      size: 14,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             // Skills Section
@@ -352,88 +329,64 @@ class _TabletHomepageState extends State<TabletHomepage> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              // child: StreamBuilder(
-              //   stream: SkillsManager().getSkillsFromFirebase(),
-              //   builder: (context, snapshot) {
-              //     List<SkillModel> skillSet = [];
-              //     if (snapshot.hasData) {
-              //       for (var data in snapshot.data.docs) {
-              //         data = data.data() as Map<String, dynamic>;
-              //         SkillModel skillItem = SkillModel(
-              //           name: data['skillName'],
-              //           level: data['skillLevel'],
-              //           category: data['skillCategory'],
-              //         );
-              //         // print('---->> ${skillItem.name}');
-              //         skillSet.add(skillItem);
-              //       }
-              //     }
-              //     // RenderBox innerSkillSection =
-              //     //     skillsSectionInnerKey.currentContext?.findRenderObject()
-              //     // as RenderBox;
-              //     // Size innerSkillSectionSize = ;
-              //     return Stack(
-              //       children: [
-              //         Positioned(
-              //           top: 0,
-              //           bottom: 0,
-              //           left: 0,
-              //           right: 0,
-              //           child: Center(
-              //             child: Icon(
-              //               Icons.settings_suggest_rounded,
-              //               size: (w * 0.25 < 200) ? w * 0.25 : 200,
-              //               color: const Color(0x559E9E9E),
-              //             ),
-              //           ),
-              //         ),
-              //         Row(
-              //           key: skillsSectionInnerKey,
-              //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //           children: [
-              //             // Column I - Languages, Core Concepts, Version Control
-              //             Column(
-              //               crossAxisAlignment: CrossAxisAlignment.start,
-              //               mainAxisAlignment: MainAxisAlignment.start,
-              //               children: [
-              //                 SkillSectionByType(
-              //                     category: 'Languages', skillSet: skillSet),
-              //                 const SizedBox(height: 20),
-              //                 SkillSectionByType(
-              //                     category: 'Core Concepts',
-              //                     skillSet: skillSet),
-              //                 const SizedBox(height: 20),
-              //                 SkillSectionByType(
-              //                     category: 'Ongoing...', skillSet: skillSet),
-              //               ],
-              //             ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Stack(
+                children: [
+                  const Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: Icon(
+                        Icons.settings_suggest_rounded,
+                        size: 200,
+                        color: Color.fromARGB(86, 158, 158, 158),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Column I - Languages, Core Concepts, Version Control
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SkillSectionByType(
+                              category: 'Languages', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Core Concepts', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Ongoing...', skillSet: skillsList),
+                        ],
+                      ),
 
-              //             // Column II - Front-end, Back-end, Ongoing
-              //             Column(
-              //               crossAxisAlignment: CrossAxisAlignment.start,
-              //               mainAxisAlignment: MainAxisAlignment.start,
-              //               children: [
-              //                 SkillSectionByType(
-              //                     category: 'Front-End', skillSet: skillSet),
-              //                 const SizedBox(height: 20),
-              //                 SkillSectionByType(
-              //                     category: 'Back-End', skillSet: skillSet),
-              //                 const SizedBox(height: 20),
-              //                 SkillSectionByType(
-              //                     category: 'Version Control',
-              //                     skillSet: skillSet),
-              //               ],
-              //             ),
-              //           ],
-              //         ),
-              //       ],
-              //     );
-              //   },
-              // ),
+                      // Column II - Front-end, Back-end, Ongoing
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SkillSectionByType(
+                              category: 'Front-End', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Back-End', skillSet: skillsList),
+                          const SizedBox(height: 20),
+                          SkillSectionByType(
+                              category: 'Version Control',
+                              skillSet: skillsList),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
+
             const SizedBox(height: 50),
 
             // Tools I Use Section
@@ -646,9 +599,9 @@ class _EmailSectionState extends State<EmailSection> {
                   RouterClass().launchURL('https://ye-lwin-oo.vercel.app/');
                 },
                 child: Txt(
-                  '   The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
+                  'The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
                   color: const Color(0x709E9E9E),
-                  size: 12,
+                  size: 11,
                 ),
               ),
             ],
@@ -679,7 +632,8 @@ class ProjectTileWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 width: w * 0.4,
-                height: w * 0.11,
+                clipBehavior: Clip.hardEdge,
+                // height: w * 0.11,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xFFc6d3b7),
@@ -690,10 +644,35 @@ class ProjectTileWidget extends StatelessWidget {
                     SizedBox(
                       height: w * 0.175,
                       width: w * 0.175,
-                      child: Image.network(
-                        projectSet[index].projectIconURL,
-                        fit: BoxFit.cover,
-                      ),
+                      // CHANGES HERE ---------------------------
+                      // child: Image.network(
+                      //   projectSet[index].projectIconURL,
+                      //   fit: BoxFit.cover,
+                      // ),
+                      child: (projectSet[index].rotateIcon!)
+                          ? Transform.rotate(
+                              angle: -10 * 3.141592653589793 / 180,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Image.asset(
+                                  projectSet[index].projectIconURL,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Image.asset(
+                                projectSet[index].projectIconURL,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                     ),
                   ],
                 ),
@@ -701,7 +680,7 @@ class ProjectTileWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 width: w * 0.4,
-                height: w * 0.11,
+                // height: w * 0.11,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0x32C6D3B7),
@@ -726,7 +705,7 @@ class ProjectTileWidget extends StatelessWidget {
           const SizedBox(width: 20),
           Expanded(
             child: Container(
-              height: w * 0.11,
+              // height: w * 0.11,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -825,7 +804,7 @@ class _SkillSectionByTypeState extends State<SkillSectionByType> {
                 SizedBox(
                   width: 82.5,
                   child: Txt(widget.skillSet[i].name,
-                      size: (14 < w * 0.028) ? 14 : w * 0.028, spacing: 2),
+                      size: (13 < w * 0.025) ? 13 : w * 0.025, spacing: 2),
                 ),
                 Stack(
                   children: [

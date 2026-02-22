@@ -20,7 +20,6 @@ class ProjectsManager {
       githubLink: '.',
       projectIconURL: 'assets/projects/MNIST.jpeg',
       toolsUsed: ['Python', 'PyTorch', 'NumPy', 'Matplotlib'],
-      availablePlatforms: [],
       tags: ['Machine Learning', 'Deep Learning', 'CNN'],
       features: [
         'Implemented a convolutional neural network (CNN) architecture to classify handwritten digits from the MNIST dataset.',
@@ -30,6 +29,7 @@ class ProjectsManager {
       ],
       rotateIcon: true,
       projectIlltURL: 'assets/projects/MNIST_illt.jpeg',
+      evaluation: ['Recall: 1.00', 'ROC-AUC: 1.00', 'Accuracy: ~75%'],
     ),
     ProjectModel(
       name: 'Pneumonia Detection CNN',
@@ -42,10 +42,11 @@ class ProjectsManager {
       features: [
         'Developed a Convolutional Neural Network (CNN) using PyTorch to classify pneumonia from ~5,800 chest X-ray images, focusing on challenges specific to medical imaging datasets.',
         'Addressed performance bottlenecks by applying image augmentation, batch normalization, threshold tuning, dropout, and analysing the effects of class imbalance on the final accuracy.',
-        'valuated model performance using ROC-AUC and Recall instead of accuracy alone, recognizing the importance of minimizing false negatives in medical datasets. Final Recall score of 1.00, ROC-AUC of 1.00, and accuracy of ~75%.',
+        'valuated model performance using ROC-AUC and Recall instead of accuracy alone, recognizing the importance of minimizing false negatives in medical datasets.',
       ],
       rotateIcon: true,
       projectIlltURL: 'assets/projects/Pneumonia_illt.png',
+      evaluation: ['Recall: 1.00', 'ROC-AUC: 1.00', 'Accuracy: ~75%'],
     ),
     ProjectModel(
       name: 'KickFlip',

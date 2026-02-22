@@ -65,9 +65,9 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                   SizedBox(
                     width: w,
                     height: h - kToolbarHeight,
-                    child: Image.network(widget.project.projectIconURL),
+                    child: Image.asset(widget.project.projectIlltURL),
                   ),
-
+                  const SizedBox(height: 30),
                   // Project Overview - desc and features
                   Txt(
                     'Project Overview',
@@ -100,7 +100,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                   ),
                   for (int i = 0; i < widget.project.features.length; i++)
                     Padding(
-                      padding: const EdgeInsets.only(left: 25),
+                      padding: const EdgeInsets.only(left: 25, bottom: 10),
                       child: Txt('- ${widget.project.features[i]}', size: 18),
                     ),
 
@@ -148,7 +148,11 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                 ),
                               ),
                               Txt(
-                                ' Platforms Available',
+                                (widget.project.availablePlatforms == null ||
+                                        widget.project.availablePlatforms!
+                                            .isEmpty)
+                                    ? ' Evaluation'
+                                    : ' Platforms Available',
                                 size: 22,
                                 spacing: 2,
                                 weight: FontWeight.bold,
@@ -156,11 +160,19 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                               ),
                             ],
                           ),
-                          for (int i = 0;
-                              i < widget.project.availablePlatforms!.length;
-                              i++)
-                            Txt('- ${widget.project.availablePlatforms![i]}',
-                                size: 18),
+                          if (widget.project.availablePlatforms == null ||
+                              widget.project.availablePlatforms!.isEmpty)
+                            for (int i = 0;
+                                i < widget.project.evaluation!.length;
+                                i++)
+                              Txt('- ${widget.project.evaluation![i]}',
+                                  size: 18)
+                          else
+                            for (int i = 0;
+                                i < widget.project.availablePlatforms!.length;
+                                i++)
+                              Txt('- ${widget.project.availablePlatforms![i]}',
+                                  size: 18),
                         ],
                       ),
 

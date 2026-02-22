@@ -10,11 +10,11 @@ class ProjectModel {
     required this.projectIlltURL,
     this.rotateIcon = false,
     this.availablePlatforms = const [],
-    this.metrics = const [],
+    this.evaluation = const [],
   });
   String name, desc, githubLink, projectIconURL, projectIlltURL;
   List tags, toolsUsed, features;
-  List? availablePlatforms, metrics;
+  List? availablePlatforms, evaluation;
 
   bool? rotateIcon;
 }

@@ -33,7 +33,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
         centerTitle: true,
         title: CustomAnimatedText(
           widget.project.name,
-          size: 42,
+          size: w * 0.052,
           weight: FontWeight.bold,
           spacing: 2,
         ),
@@ -100,7 +100,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                   ),
                   for (int i = 0; i < widget.project.features.length; i++)
                     Padding(
-                      padding: const EdgeInsets.only(left: 25),
+                      padding: const EdgeInsets.only(left: 25, bottom: 10),
                       child: Txt('- ${widget.project.features[i]}', size: 16),
                     ),
 
@@ -108,7 +108,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                   const SizedBox(height: 30),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Column I - Platforms and Tools used
                       SizedBox(
