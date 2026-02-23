@@ -1,45 +1,34 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/models/projectsModel.dart';
-import 'package:portfolio/screens/desktop/desktopProjectPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Txt extends StatelessWidget {
-  String content;
-  Color? color;
-  double? size;
-  double? spacing, wordSpacing;
-  List<Shadow>? shadowList;
-  FontWeight? weight;
-  TextOverflow? overflow;
-  int? maxLines;
-  TextAlign? align;
-  FontStyle? fontStyle;
+  final String content;
+  final Color color;
+  final double size;
+  final double spacing;
+  final double wordSpacing;
+  final List<Shadow> shadowList;
+  final FontWeight weight;
+  final TextOverflow overflow;
+  final int? maxLines;
+  final TextAlign? align;
+  final FontStyle? fontStyle;
 
-  Txt(this.content,
-      {super.key,
-      this.color,
-      this.size,
-      this.spacing,
-      this.wordSpacing,
-      this.shadowList,
-      this.weight,
-      this.overflow,
-      this.maxLines,
-      this.align,
-      this.fontStyle}) {
-    color ??= Colors.black;
-    size ??= 16;
-    spacing ??= 0;
-    wordSpacing ??= 0;
-    shadowList ??= [];
-    weight ??= FontWeight.normal;
-    overflow ??= TextOverflow.clip;
-    maxLines ??= null;
-    align ??= null;
-    fontStyle ??= null;
-  }
+  const Txt(
+    this.content, {
+    super.key,
+    this.color = Colors.black,
+    this.size = 16,
+    this.spacing = 0,
+    this.wordSpacing = 0,
+    this.shadowList = const [],
+    this.weight = FontWeight.normal,
+    this.overflow = TextOverflow.clip,
+    this.maxLines,
+    this.align,
+    this.fontStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +36,9 @@ class Txt extends StatelessWidget {
       content,
       textAlign: align,
       maxLines: maxLines,
-      style: GoogleFonts.comicNeue(
-        textStyle: TextStyle(overflow: overflow),
+      overflow: overflow,
+      style: TextStyle(
+        fontFamily: 'ComicNeue',
         color: color,
         fontSize: size,
         fontStyle: fontStyle,
@@ -123,43 +113,34 @@ class MyTextField extends StatelessWidget {
 }
 
 class CustomAnimatedText extends StatelessWidget {
-  String content;
-  Color? color;
-  double? size;
-  double? spacing, wordSpacing;
-  List<Shadow>? shadowList;
-  FontWeight? weight;
-  TextOverflow? overflow;
-  int? maxLines;
-  TextAlign? align;
-  FontStyle? fontStyle;
-  int? speed;
+  final String content;
+  final Color color;
+  final double size;
+  final double spacing;
+  final double wordSpacing;
+  final List<Shadow> shadowList;
+  final FontWeight weight;
+  final TextOverflow overflow;
+  final int? maxLines;
+  final TextAlign align;
+  final FontStyle? fontStyle;
+  final int speed;
 
-  CustomAnimatedText(this.content,
-      {super.key,
-      this.color,
-      this.size,
-      this.spacing,
-      this.wordSpacing,
-      this.shadowList,
-      this.weight,
-      this.overflow,
-      this.maxLines,
-      this.align,
-      this.fontStyle,
-      this.speed}) {
-    color ??= Colors.black;
-    size ??= 16;
-    spacing ??= 0;
-    wordSpacing ??= 0;
-    shadowList ??= [];
-    weight ??= FontWeight.normal;
-    overflow ??= TextOverflow.clip;
-    maxLines ??= null;
-    align ??= TextAlign.left;
-    fontStyle ??= null;
-    speed ??= 100;
-  }
+  const CustomAnimatedText(
+    this.content, {
+    super.key,
+    this.color = Colors.black,
+    this.size = 16,
+    this.spacing = 0,
+    this.wordSpacing = 0,
+    this.shadowList = const [],
+    this.weight = FontWeight.normal,
+    this.overflow = TextOverflow.clip,
+    this.maxLines,
+    this.align = TextAlign.left,
+    this.fontStyle,
+    this.speed = 100,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -168,10 +149,10 @@ class CustomAnimatedText extends StatelessWidget {
       animatedTexts: [
         TyperAnimatedText(
           content,
-          textAlign: align!,
-          speed: Duration(milliseconds: speed!),
-          textStyle: GoogleFonts.comicNeue(
-            textStyle: TextStyle(overflow: overflow),
+          textAlign: align,
+          speed: Duration(milliseconds: speed),
+          textStyle: TextStyle(
+            fontFamily: 'ComicNeue', // ✅ local font
             color: color,
             fontSize: size,
             fontStyle: fontStyle,

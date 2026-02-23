@@ -45,7 +45,7 @@ class MyEndDrawer extends StatelessWidget {
                         size: (fontSize != 16) ? fontSize! + 4 : 20),
                     const SizedBox(width: 10),
                     Txt('About Me',
-                        weight: FontWeight.bold, spacing: 2, size: fontSize)
+                        weight: FontWeight.bold, spacing: 2, size: fontSize!)
                   ],
                 ),
               ),
@@ -67,7 +67,7 @@ class MyEndDrawer extends StatelessWidget {
                         size: (fontSize != 16) ? fontSize! + 4 : 20),
                     const SizedBox(width: 10),
                     Txt('My Works',
-                        weight: FontWeight.bold, spacing: 2, size: fontSize)
+                        weight: FontWeight.bold, spacing: 2, size: fontSize!)
                   ],
                 ),
               ),
@@ -89,7 +89,7 @@ class MyEndDrawer extends StatelessWidget {
                         size: (fontSize != 16) ? fontSize! + 4 : 20),
                     const SizedBox(width: 10),
                     Txt('My Skills',
-                        weight: FontWeight.bold, spacing: 2, size: fontSize)
+                        weight: FontWeight.bold, spacing: 2, size: fontSize!)
                   ],
                 ),
               ),
@@ -111,7 +111,7 @@ class MyEndDrawer extends StatelessWidget {
                         size: (fontSize != 16) ? fontSize! + 4 : 20),
                     const SizedBox(width: 10),
                     Txt('Download Resume',
-                        weight: FontWeight.bold, spacing: 2, size: fontSize)
+                        weight: FontWeight.bold, spacing: 2, size: fontSize!)
                   ],
                 ),
               ),
@@ -133,7 +133,7 @@ class MyEndDrawer extends StatelessWidget {
                         size: (fontSize != 16) ? fontSize! + 4 : 20),
                     const SizedBox(width: 10),
                     Txt('E-mail Me',
-                        weight: FontWeight.bold, spacing: 2, size: fontSize)
+                        weight: FontWeight.bold, spacing: 2, size: fontSize!)
                   ],
                 ),
               ),

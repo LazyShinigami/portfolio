@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/commons.dart';
 import 'package:portfolio/models/projectsModel.dart';
@@ -226,9 +225,9 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                               overflow: TextOverflow.ellipsis,
                             ),
                             duration: const Duration(milliseconds: 200),
-                            child: Text(
+                            child: Txt(
                               '- ${widget.project.githubLink}',
-                              style: GoogleFonts.comicNeue(fontSize: 14),
+                              size: 14,
                             ),
                           ),
                         ),

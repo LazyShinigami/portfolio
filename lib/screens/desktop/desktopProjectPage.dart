@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/commons.dart';
 import 'package:portfolio/models/projectsModel.dart';
@@ -240,10 +239,8 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 duration: const Duration(milliseconds: 200),
-                                child: Text(
-                                  '- ${widget.project.githubLink}',
-                                  style: GoogleFonts.comicNeue(fontSize: 18),
-                                ),
+                                child: Txt('- ${widget.project.githubLink}',
+                                    size: 14),
                               ),
                             ),
                           )

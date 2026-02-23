@@ -9,10 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: 5.1.0
-  firebase_core: ^3.3.0
-  cloud_firestore: ^5.2.0
-  firebase_storage: ^12.1.2
   visibility_detector: ^0.4.0+2
   lottie: ^3.1.2
   animated_text_kit: ^4.2.2
@@ -33,3 +29,9 @@ flutter:
     - assets/
     - assets/projects/
     - assets/resume/
+  fonts:
+    - family: ComicNeue
+      fonts:
+        - asset: assets/fonts/ComicNeue-Regular.ttf
+        - asset: assets/fonts/ComicNeue-Bold.ttf
+          weight: 700

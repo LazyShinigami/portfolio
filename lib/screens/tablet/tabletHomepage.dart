@@ -1,6 +1,4 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/backend/emailService.dart';
 import 'package:portfolio/commons.dart';
 import 'package:portfolio/backend/projectsManager.dart';
@@ -200,31 +198,25 @@ class _TabletHomepageState extends State<TabletHomepage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            Txt(
                               '\$ portfolio/ritesh ~ find / name-"resume.pdf"',
-                              style: GoogleFonts.comicNeue(
-                                color: Colors.white,
-                                fontSize: 12.5,
-                                letterSpacing: 1,
-                              ),
+                              color: Colors.white,
+                              size: 12.5,
+                              spacing: 1,
                             ),
                             const SizedBox(height: 15),
-                            Text(
+                            Txt(
                               '> Searching . . .',
-                              style: GoogleFonts.comicNeue(
-                                color: Colors.grey,
-                                fontSize: 12.5,
-                                letterSpacing: 1,
-                              ),
+                              color: Colors.grey,
+                              size: 12.5,
+                              spacing: 1,
                             ),
                             const SizedBox(height: 15),
-                            Text(
+                            Txt(
                               '> file found',
-                              style: GoogleFonts.comicNeue(
-                                color: Colors.green,
-                                fontSize: 12.5,
-                                letterSpacing: 1,
-                              ),
+                              color: Colors.green,
+                              size: 12.5,
+                              spacing: 1,
                             ),
                             const SizedBox(height: 15),
                             AnimatedDefaultTextStyle(
@@ -236,10 +228,10 @@ class _TabletHomepageState extends State<TabletHomepage> {
                               child: InkWell(
                                 onTap: () async {
                                   // getting the  download url for the resume
-                                  String url = await FirebaseStorage.instance
-                                      .ref('Ritesh Kumar - Resume.pdf')
-                                      .getDownloadURL();
-                                  RouterClass().launchURL(url);
+                                  // String url = await FirebaseStorage.instance
+                                  //     .ref('Ritesh Kumar - Resume.pdf')
+                                  //     .getDownloadURL();
+                                  // RouterClass().launchURL(url);
                                 },
                                 child: MouseRegion(
                                   onEnter: (event) => setState(() {
@@ -248,13 +240,11 @@ class _TabletHomepageState extends State<TabletHomepage> {
                                   onExit: (event) => setState(() {
                                     _isDownloadButtonHovered = false;
                                   }),
-                                  child: Text(
+                                  child: Txt(
                                     '> click here to download my resume',
-                                    style: GoogleFonts.comicNeue(
-                                      color: Colors.green,
-                                      fontSize: 12.5,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    color: Colors.green,
+                                    size: 12.5,
+                                    weight: FontWeight.bold,
                                   ),
                                 ),
                               ),

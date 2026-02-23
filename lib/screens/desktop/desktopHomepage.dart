@@ -1,8 +1,6 @@
 import 'dart:html' as html;
 
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/backend/emailService.dart';
 import 'package:portfolio/commons.dart';
 import 'package:portfolio/backend/projectsManager.dart';
@@ -85,21 +83,21 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           // name
-                          Txt(' Hi, I\'m', weight: FontWeight.bold),
-                          CustomAnimatedText(
+                          const Txt(' Hi, I\'m', weight: FontWeight.bold),
+                          const CustomAnimatedText(
                             'Ritesh Kumar',
                             size: 60,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
                           // about
-                          CustomAnimatedText(
+                          const CustomAnimatedText(
                             'AI & ML Developer,',
                             size: 40,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
-                          CustomAnimatedText(
+                          const CustomAnimatedText(
                             'Flutter Developer',
                             size: 40,
                             spacing: 2,
@@ -107,15 +105,15 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                           ),
                           // interests
                           const SizedBox(height: 15),
-                          Txt(
+                          const Txt(
                             '~ AI / ML enthusiast',
                             spacing: 2,
                           ),
-                          Txt(
+                          const Txt(
                             '~ mobile app developer',
                             spacing: 2,
                           ),
-                          Txt(
+                          const Txt(
                             '~ solving problems with code',
                             spacing: 2,
                           ),
@@ -135,11 +133,11 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                       Border.all(width: 1, color: Colors.black),
                                   color: const Color(0xFFf3f4ee),
                                 ),
-                                child: Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Txt('SEE MY WORK  ', size: 14, spacing: 2),
-                                    const Icon(Icons.arrow_forward),
+                                    Icon(Icons.arrow_forward, size: 18),
                                   ],
                                 ),
                               ),
@@ -155,9 +153,10 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                   RouterClass().launchURL(
                                       'https://github.com/LazyShinigami');
                                 },
-                                child: Txt(' GitHub ', spacing: 1, size: 14),
+                                child:
+                                    const Txt(' GitHub ', spacing: 1, size: 14),
                               ),
-                              Txt(' / '),
+                              const Txt(' / '),
                               InkWell(
                                 onTap: () {
                                   RouterClass().launchURL(
@@ -218,13 +217,11 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                       '_blank',
                                     );
                                   },
-                                  child: Text(
+                                  child: Txt(
                                     '> click here to download my resume',
-                                    style: GoogleFonts.comicNeue(
-                                      color: Colors.green,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    size: 14,
+                                    color: Colors.green,
+                                    weight: FontWeight.bold,
                                   ),
                                 ),
                               ),
