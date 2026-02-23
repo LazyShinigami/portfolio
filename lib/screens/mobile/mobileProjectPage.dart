@@ -70,7 +70,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                   ),
 
                   // Project Overview - desc and features
-                  Txt(
+                  const Txt(
                     'Project Overview',
                     size: 20,
                     spacing: 3,
@@ -80,7 +80,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
 
                   // Description
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'About',
                     size: 16,
                     spacing: 2,
@@ -92,7 +92,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
 
                   // Features
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'Features',
                     size: 16,
                     spacing: 2,
@@ -119,7 +119,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                             width: 15,
                             child: Image.asset('assets/cpu.png'),
                           ),
-                          Txt(
+                          const Txt(
                             ' Tools & Technologies',
                             size: 16,
                             spacing: 2,
@@ -145,7 +145,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                               'assets/platform.png',
                             ),
                           ),
-                          Txt(
+                          const Txt(
                             ' Platforms Available',
                             size: 16,
                             spacing: 2,
@@ -171,7 +171,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                             width: 15,
                             child: Image.asset('assets/tag.png'),
                           ),
-                          Txt(
+                          const Txt(
                             ' Tags',
                             size: 16,
                             spacing: 2,
@@ -197,7 +197,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                               'assets/link.png',
                             ),
                           ),
-                          Txt(
+                          const Txt(
                             ' Project Link',
                             size: 16,
                             spacing: 2,

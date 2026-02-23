@@ -68,7 +68,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                   ),
                   const SizedBox(height: 30),
                   // Project Overview - desc and features
-                  Txt(
+                  const Txt(
                     'Project Overview',
                     size: 32,
                     spacing: 3,
@@ -78,7 +78,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
 
                   // Description
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'About',
                     size: 22,
                     spacing: 2,
@@ -90,7 +90,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
 
                   // Features
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'Features',
                     size: 22,
                     spacing: 2,
@@ -121,7 +121,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                 width: 20,
                                 child: Image.asset('assets/cpu.png'),
                               ),
-                              Txt(
+                              const Txt(
                                 ' Tools & Technologies',
                                 size: 22,
                                 spacing: 2,
@@ -187,7 +187,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                 width: 20,
                                 child: Image.asset('assets/tag.png'),
                               ),
-                              Txt(
+                              const Txt(
                                 ' Tags',
                                 size: 22,
                                 spacing: 2,
@@ -210,7 +210,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                   'assets/link.png',
                                 ),
                               ),
-                              Txt(
+                              const Txt(
                                 ' Project Link',
                                 size: 22,
                                 spacing: 2,

@@ -11,7 +11,6 @@ import 'package:portfolio/screens/desktop/desktopProjectPage.dart';
 import 'package:portfolio/widgets/drawerIcon.dart';
 import 'package:portfolio/widgets/endDrawer.dart';
 import 'package:portfolio/widgets/shadowButton.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class DesktopHomepage extends StatefulWidget {
@@ -174,21 +173,21 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Txt(
+                            const Txt(
                               '\$ portfolio/ritesh ~ find / name-"resume.pdf"',
                               color: Colors.white,
                               size: 14,
                               spacing: 1.5,
                             ),
                             const SizedBox(height: 15),
-                            Txt(
+                            const Txt(
                               '> Searching . . .',
                               color: Colors.grey,
                               size: 14,
                               spacing: 1.5,
                             ),
                             const SizedBox(height: 15),
-                            Txt(
+                            const Txt(
                               '> file found',
                               color: Colors.green,
                               size: 14,
@@ -218,7 +217,7 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                     // Open in a new browser tab
                                     html.window.open(filePath, '_blank');
                                   },
-                                  child: Txt(
+                                  child: const Txt(
                                     '> click here to download my resume',
                                     size: 14,
                                     color: Colors.green,
@@ -244,8 +243,8 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
               // crafted with love msg
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  Row(
+                  const SizedBox(height: 20),
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Txt(
@@ -257,7 +256,7 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   for (int i = 0; i < projectsList.length; i++)
                     ProjectTileWidget(index: i, projectSet: projectsList),
                   const SizedBox(height: 20),
@@ -266,7 +265,7 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                       RouterClass().launchURL(
                           'https://github.com/LazyShinigami?tab=repositories');
                     },
-                    child: Txt(
+                    child: const Txt(
                       '  Click here to view all my projects on GitHub >  ',
                       spacing: 2.5,
                       wordSpacing: 5,
@@ -284,7 +283,7 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
               key: skillsSectionKey,
               padding:
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Txt(
@@ -406,7 +405,7 @@ class _EmailSectionState extends State<EmailSection> {
                 vertical: 50, horizontal: (w * 0.2 > 20) ? w * 0.2 : 20),
             child: Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Txt(
@@ -506,7 +505,7 @@ class _EmailSectionState extends State<EmailSection> {
                             ],
                             color: const Color(0xFFf3f4ee),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Txt(
@@ -515,7 +514,7 @@ class _EmailSectionState extends State<EmailSection> {
                                 weight: FontWeight.bold,
                                 size: 14,
                               ),
-                              const Icon(
+                              Icon(
                                 Icons.send_rounded,
                                 color: Colors.black,
                                 size: 14,
@@ -539,9 +538,9 @@ class _EmailSectionState extends State<EmailSection> {
                 onTap: () {
                   RouterClass().launchURL('https://ye-lwin-oo.vercel.app/');
                 },
-                child: Txt(
+                child: const Txt(
                   '   The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
-                  color: const Color(0x709E9E9E),
+                  color: Color(0x709E9E9E),
                   size: 12,
                 ),
               ),
@@ -690,11 +689,11 @@ class ProjectTileWidget extends StatelessWidget {
                           border: Border.all(width: 1, color: Colors.black),
                           color: const Color(0xFFf3f4ee),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Txt('View Project ', size: 13, spacing: 2),
-                            const Icon(Icons.arrow_forward, size: 14),
+                            Icon(Icons.arrow_forward, size: 14),
                           ],
                         ),
                       ),
