@@ -29,6 +29,7 @@ flutter:
     - assets/
     - assets/projects/
     - assets/resume/
+    - assets/progressive tapping.lottie
   fonts:
     - family: ComicNeue
       fonts:
