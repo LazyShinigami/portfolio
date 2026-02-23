@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:portfolio/backend/emailService.dart';
 import 'package:portfolio/commons.dart';
@@ -226,12 +227,12 @@ class _TabletHomepageState extends State<TabletHomepage> {
                               ),
                               duration: const Duration(milliseconds: 200),
                               child: InkWell(
-                                onTap: () async {
-                                  // getting the  download url for the resume
-                                  // String url = await FirebaseStorage.instance
-                                  //     .ref('Ritesh Kumar - Resume.pdf')
-                                  //     .getDownloadURL();
-                                  // RouterClass().launchURL(url);
+                                onTap: () {
+                                  const filePath =
+                                      'assets/resume/Ritesh_Kumar_Resume.pdf';
+
+                                  // Open in a new browser tab
+                                  html.window.open(filePath, '_blank');
                                 },
                                 child: MouseRegion(
                                   onEnter: (event) => setState(() {

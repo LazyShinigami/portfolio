@@ -212,10 +212,11 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                 duration: const Duration(milliseconds: 200),
                                 child: InkWell(
                                   onTap: () {
-                                    html.window.open(
-                                      'Ritesh_Kumar_Resume.pdf',
-                                      '_blank',
-                                    );
+                                    const filePath =
+                                        'assets/resume/Ritesh_Kumar_Resume.pdf';
+
+                                    // Open in a new browser tab
+                                    html.window.open(filePath, '_blank');
                                   },
                                   child: Txt(
                                     '> click here to download my resume',
