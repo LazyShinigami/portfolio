@@ -613,11 +613,6 @@ class ProjectTileWidget extends StatelessWidget {
                     SizedBox(
                       height: w * 0.175,
                       width: w * 0.175,
-                      // CHANGES HERE ---------------------------
-                      // child: Image.network(
-                      //   projectSet[index].projectIconURL,
-                      //   fit: BoxFit.cover,
-                      // ),
                       child: (projectSet[index].rotateIcon!)
                           ? Transform.rotate(
                               angle: -10 * 3.141592653589793 / 180,
@@ -646,25 +641,28 @@ class ProjectTileWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                width: w * 0.4,
-                // height: w * 0.11,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0x32C6D3B7),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Txt(
-                      '0${index + 1}',
-                      fontStyle: FontStyle.italic,
-                      size: w * 0.035,
-                      weight: FontWeight.bold,
-                      spacing: 5,
-                    ),
-                  ],
+              Positioned.fill(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  width: w * 0.4,
+                  // height: w * 0r.11,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0x32C6D3B7),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Txt(
+                        '0${index + 1}',
+                        fontStyle: FontStyle.italic,
+                        size: w * 0.035,
+                        weight: FontWeight.bold,
+                        spacing: 5,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

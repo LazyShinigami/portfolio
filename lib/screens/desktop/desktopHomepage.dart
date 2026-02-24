@@ -585,11 +585,6 @@ class ProjectTileWidget extends StatelessWidget {
                     SizedBox(
                       height: w * 0.175,
                       width: w * 0.175,
-                      // CHANGES HERE ---------------------------
-                      // child: Image.network(
-                      //   projectSet[index].projectIconURL,
-                      //   fit: BoxFit.cover,
-                      // ),
                       child: (projectSet[index].rotateIcon!)
                           ? Transform.rotate(
                               angle: -10 * 3.141592653589793 / 180,

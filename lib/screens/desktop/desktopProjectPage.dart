@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/commons.dart';
@@ -36,6 +35,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
           weight: FontWeight.bold,
           spacing: 2,
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -86,7 +86,15 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                     fontStyle: FontStyle.italic,
                   ),
                   for (int i = 0; i < processedDesc.length; i++)
-                    Txt(processedDesc[i], size: 18),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color(0xFFE5E5E4)),
+                      child: Txt(processedDesc[i], size: 18),
+                    ),
 
                   // Features
                   const SizedBox(height: 10),
@@ -98,8 +106,13 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                     fontStyle: FontStyle.italic,
                   ),
                   for (int i = 0; i < widget.project.features.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, bottom: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color(0xFFE5E5E4)),
                       child: Txt('- ${widget.project.features[i]}', size: 18),
                     ),
 
@@ -239,8 +252,12 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 duration: const Duration(milliseconds: 200),
-                                child: Txt('- ${widget.project.githubLink}',
-                                    overflow: TextOverflow.ellipsis, size: 14),
+                                child: SizedBox(
+                                  width: w * 0.25,
+                                  child: Txt('- ${widget.project.githubLink}',
+                                      overflow: TextOverflow.ellipsis,
+                                      size: 14),
+                                ),
                               ),
                             ),
                           )

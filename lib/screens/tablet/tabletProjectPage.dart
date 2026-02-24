@@ -86,7 +86,15 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                     fontStyle: FontStyle.italic,
                   ),
                   for (int i = 0; i < processedDesc.length; i++)
-                    Txt(processedDesc[i], size: 16),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color(0xFFE5E5E4)),
+                      child: Txt(processedDesc[i], size: 16),
+                    ),
 
                   // Features
                   const SizedBox(height: 10),
@@ -98,8 +106,13 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                     fontStyle: FontStyle.italic,
                   ),
                   for (int i = 0; i < widget.project.features.length; i++)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, bottom: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color(0xFFE5E5E4)),
                       child: Txt('- ${widget.project.features[i]}', size: 16),
                     ),
 
@@ -251,10 +264,13 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     duration: const Duration(milliseconds: 200),
-                                    child: Txt(
-                                      '- ${widget.project.githubLink}',
-                                      size: 16,
-                                      overflow: TextOverflow.ellipsis,
+                                    child: SizedBox(
+                                      width: w * 0.4,
+                                      child: Txt(
+                                        '- ${widget.project.githubLink}',
+                                        size: 16,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                   ),
                                 ),
