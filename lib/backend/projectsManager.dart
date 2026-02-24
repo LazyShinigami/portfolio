@@ -29,7 +29,7 @@ class ProjectsManager {
         'Visualized training progress and results using Matplotlib, including loss and accuracy curves.'
       ],
       rotateIcon: true,
-      projectIlltURL: 'assets/projects/MNIST_illt.jpeg',
+      projectIlltURL: 'assets/projects/MNIST_illt.png',
       evaluation: ['Recall: 1.00', 'ROC-AUC: 1.00', 'Accuracy: ~75%'],
     ),
     ProjectModel(
@@ -64,7 +64,7 @@ class ProjectsManager {
         'Implemented mechanism for product verification prior to listing to ensure customer\'s interests are protected.',
       ],
       rotateIcon: false,
-      projectIlltURL: 'assets/projects/KickFlip_illt.jpg',
+      projectIlltURL: 'assets/projects/KickFlip_illt.png',
     ),
     ProjectModel(
       name: 'Employee Churn Neural Network',
@@ -88,7 +88,7 @@ class ProjectsManager {
         'Optimized the network for an accuracy of ~93.7%.'
       ],
       rotateIcon: true,
-      projectIlltURL: 'assets/projects/EmployeeChurn_illt.jpeg',
+      projectIlltURL: 'assets/projects/EmployeeChurn_illt.png',
     ),
   ];
 }
