@@ -17,7 +17,6 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
   bool _isGithubLinkHovered = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     var x = widget.project.desc.split('splitHere');
     processedDesc = x;
@@ -66,7 +65,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                   SizedBox(
                     width: w,
                     height: h - kToolbarHeight,
-                    child: Image.network(widget.project.projectIconURL),
+                    child: Image.asset(widget.project.projectIlltURL),
                   ),
 
                   // Project Overview - desc and features
@@ -101,7 +100,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                   ),
                   for (int i = 0; i < widget.project.features.length; i++)
                     Padding(
-                      padding: const EdgeInsets.only(left: 25),
+                      padding: const EdgeInsets.only(left: 10, bottom: 10),
                       child: Txt('- ${widget.project.features[i]}', size: 14),
                     ),
 
@@ -145,8 +144,11 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                               'assets/platform.png',
                             ),
                           ),
-                          const Txt(
-                            ' Platforms Available',
+                          Txt(
+                            (widget.project.availablePlatforms == null ||
+                                    widget.project.availablePlatforms!.isEmpty)
+                                ? ' Evaluation'
+                                : ' Platforms Available',
                             size: 16,
                             spacing: 2,
                             weight: FontWeight.bold,
@@ -154,13 +156,18 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                           ),
                         ],
                       ),
-                      for (int i = 0;
-                          i < widget.project.availablePlatforms!.length;
-                          i++)
-                        Txt(
-                          '- ${widget.project.availablePlatforms![i]}',
-                          size: 14,
-                        ),
+                      if (widget.project.availablePlatforms == null ||
+                          widget.project.availablePlatforms!.isEmpty)
+                        for (int i = 0;
+                            i < widget.project.evaluation!.length;
+                            i++)
+                          Txt('- ${widget.project.evaluation![i]}', size: 14)
+                      else
+                        for (int i = 0;
+                            i < widget.project.availablePlatforms!.length;
+                            i++)
+                          Txt('- ${widget.project.availablePlatforms![i]}',
+                              size: 14),
 
                       // Tags
                       const SizedBox(height: 20),
@@ -228,6 +235,7 @@ class _MobileProjectPageState extends State<MobileProjectPage> {
                             child: Txt(
                               '- ${widget.project.githubLink}',
                               size: 14,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),

@@ -161,7 +161,8 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                   RouterClass().launchURL(
                                       'https://www.linkedin.com/in/ritesh-kumar-482824239/');
                                 },
-                                child: Txt(' LinkedIn ', spacing: 1, size: 14),
+                                child: const Txt(' LinkedIn ',
+                                    spacing: 1, size: 14),
                               ),
                             ],
                           ),

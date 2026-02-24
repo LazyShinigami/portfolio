@@ -17,7 +17,8 @@ class ProjectsManager {
       name: 'MNIST Classifier',
       desc:
           'A convolutional neural network that classifies handwritten digits from MNIST dataset.',
-      githubLink: '.',
+      githubLink:
+          'https://github.com/LazyShinigami/Machine-Learning-30-Days/blob/main/Day%209/MNIST_CNN_PyTorch.ipynb',
       projectIconURL: 'assets/projects/MNIST.jpeg',
       toolsUsed: ['Python', 'PyTorch', 'NumPy', 'Matplotlib'],
       tags: ['Machine Learning', 'Deep Learning', 'CNN'],
@@ -34,7 +35,8 @@ class ProjectsManager {
     ProjectModel(
       name: 'Pneumonia Detection CNN',
       desc: 'Detecting Pneumonia after analysing chest X-ray images',
-      githubLink: 'githubLink',
+      githubLink:
+          'https://github.com/LazyShinigami/Machine-Learning-30-Days/tree/main/Day%2010',
       projectIconURL: 'assets/projects/Pneumonia.jpeg',
       toolsUsed: ['Python', 'PyTorch', 'Matplotlib'],
       availablePlatforms: [],
@@ -51,7 +53,7 @@ class ProjectsManager {
     ProjectModel(
       name: 'KickFlip',
       desc: 'An online marketplace for sneaker enthusiasts',
-      githubLink: 'githubLink',
+      githubLink: 'https://github.com/LazyShinigami/KickFlip-v2',
       projectIconURL: 'assets/projects/KickFlip.png',
       toolsUsed: ['Flutter', 'Firebase', 'Rest APIs'],
       availablePlatforms: ['Android', 'iOS'],
@@ -68,7 +70,8 @@ class ProjectsManager {
       name: 'Employee Churn Neural Network',
       desc:
           'Created an employee churn neural network from scratch, no Tensorflow or PyTorch - just math and logic',
-      githubLink: 'githubLink',
+      githubLink:
+          'https://github.com/LazyShinigami/Machine-Learning-30-Days/blob/main/Day%207/Employe%20Churn%20-%20Neural%20Network.ipynb',
       projectIconURL: 'assets/projects/EmployeeChurn.jpeg',
       toolsUsed: [
         'Python',

@@ -64,7 +64,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                   SizedBox(
                     width: w,
                     height: h - kToolbarHeight,
-                    child: Image.network(widget.project.projectIconURL),
+                    child: Image.asset(widget.project.projectIlltURL),
                   ),
 
                   // Project Overview - desc and features
@@ -78,7 +78,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
 
                   // Description
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'About',
                     size: 18,
                     spacing: 2,
@@ -90,7 +90,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
 
                   // Features
                   const SizedBox(height: 10),
-                  Txt(
+                  const Txt(
                     'Features',
                     size: 18,
                     spacing: 2,
@@ -123,7 +123,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                   width: 15,
                                   child: Image.asset('assets/cpu.png'),
                                 ),
-                                Txt(
+                                const Txt(
                                   ' Tools & Technologies',
                                   size: 18,
                                   spacing: 2,
@@ -152,7 +152,11 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                   ),
                                 ),
                                 Txt(
-                                  ' Platforms Available',
+                                  (widget.project.availablePlatforms == null ||
+                                          widget.project.availablePlatforms!
+                                              .isEmpty)
+                                      ? ' Evaluation'
+                                      : ' Platforms Available',
                                   size: 18,
                                   spacing: 2,
                                   weight: FontWeight.bold,
@@ -160,13 +164,19 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                 ),
                               ],
                             ),
-                            for (int i = 0;
-                                i < widget.project.availablePlatforms!.length;
-                                i++)
-                              Txt(
-                                '- ${widget.project.availablePlatforms![i]}',
-                                size: 16,
-                              ),
+                            if (widget.project.availablePlatforms == null ||
+                                widget.project.availablePlatforms!.isEmpty)
+                              for (int i = 0;
+                                  i < widget.project.evaluation!.length;
+                                  i++)
+                                Txt('- ${widget.project.evaluation![i]}',
+                                    size: 16)
+                            else
+                              for (int i = 0;
+                                  i < widget.project.availablePlatforms!.length;
+                                  i++)
+                                Txt('- ${widget.project.availablePlatforms![i]}',
+                                    size: 16),
                           ],
                         ),
                       ),
@@ -185,7 +195,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                   width: 15,
                                   child: Image.asset('assets/tag.png'),
                                 ),
-                                Txt(
+                                const Txt(
                                   ' Tags',
                                   size: 18,
                                   spacing: 2,
@@ -211,7 +221,7 @@ class _TabletProjectPageState extends State<TabletProjectPage> {
                                     'assets/link.png',
                                   ),
                                 ),
-                                Txt(
+                                const Txt(
                                   ' Project Link',
                                   size: 18,
                                   spacing: 2,

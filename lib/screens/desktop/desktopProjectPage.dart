@@ -240,7 +240,7 @@ class _DesktopProjectPageState extends State<DesktopProjectPage> {
                                 ),
                                 duration: const Duration(milliseconds: 200),
                                 child: Txt('- ${widget.project.githubLink}',
-                                    size: 14),
+                                    overflow: TextOverflow.ellipsis, size: 14),
                               ),
                             ),
                           )

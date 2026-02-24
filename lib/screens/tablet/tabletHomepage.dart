@@ -22,7 +22,7 @@ class TabletHomepage extends StatefulWidget {
 class _TabletHomepageState extends State<TabletHomepage> {
   bool _isDownloadButtonHovered = false;
 
-  final ScrollController _scrollController = ScrollController();
+  // final ScrollController _scrollController = ScrollController();
   void _scrollToSection(GlobalKey sectionKey) {
     Scrollable.ensureVisible(
       sectionKey.currentContext!,
@@ -96,7 +96,7 @@ class _TabletHomepageState extends State<TabletHomepage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           // name
-                          Txt(
+                          const Txt(
                             'Hi, I\'m',
                             weight: FontWeight.bold,
                             size: 13,
@@ -109,31 +109,32 @@ class _TabletHomepageState extends State<TabletHomepage> {
                           ),
                           // about
                           CustomAnimatedText(
-                            'Flutter Developer,',
+                            'AI & ML Developer',
                             size: w * 0.035,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
                           CustomAnimatedText(
-                            'AI & ML Enthusiast',
+                            'Flutter Developer,',
                             size: w * 0.035,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
+
                           // interests
                           const SizedBox(height: 15),
-                          Txt(
-                            '~ passionate mobile app developer',
+                          const Txt(
+                            '~ AI / ML enthusiast',
                             spacing: 2,
                             size: 14,
                           ),
-                          Txt(
-                            '~ avid reader',
+                          const Txt(
+                            '~ mobile app developer',
                             spacing: 2,
                             size: 14,
                           ),
-                          Txt(
-                            '~ tech enthusiast',
+                          const Txt(
+                            '~ solving problems with code',
                             spacing: 2,
                             size: 14,
                           ),
@@ -153,11 +154,11 @@ class _TabletHomepageState extends State<TabletHomepage> {
                                       Border.all(width: 1, color: Colors.black),
                                   color: const Color(0xFFf3f4ee),
                                 ),
-                                child: Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Txt('SEE MY WORK ', size: 13, spacing: 2),
-                                    const Icon(
+                                    Icon(
                                       Icons.arrow_forward,
                                       size: 13,
                                     ),
@@ -179,7 +180,7 @@ class _TabletHomepageState extends State<TabletHomepage> {
                                     spacing: 1,
                                     size: (14 < w * 0.025) ? 14 : w * 0.025),
                               ),
-                              Txt(' / '),
+                              const Txt(' / '),
                               InkWell(
                                 onTap: () {
                                   RouterClass().launchURL(
@@ -199,21 +200,21 @@ class _TabletHomepageState extends State<TabletHomepage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Txt(
+                            const Txt(
                               '\$ portfolio/ritesh ~ find / name-"resume.pdf"',
                               color: Colors.white,
                               size: 12.5,
                               spacing: 1,
                             ),
                             const SizedBox(height: 15),
-                            Txt(
+                            const Txt(
                               '> Searching . . .',
                               color: Colors.grey,
                               size: 12.5,
                               spacing: 1,
                             ),
                             const SizedBox(height: 15),
-                            Txt(
+                            const Txt(
                               '> file found',
                               color: Colors.green,
                               size: 12.5,
@@ -241,7 +242,7 @@ class _TabletHomepageState extends State<TabletHomepage> {
                                   onExit: (event) => setState(() {
                                     _isDownloadButtonHovered = false;
                                   }),
-                                  child: Txt(
+                                  child: const Txt(
                                     '> click here to download my resume',
                                     color: Colors.green,
                                     size: 12.5,
@@ -290,7 +291,7 @@ class _TabletHomepageState extends State<TabletHomepage> {
                       RouterClass().launchURL(
                           'https://github.com/LazyShinigami?tab=repositories');
                     },
-                    child: Txt(
+                    child: const Txt(
                       '  Click here to view all my projects on GitHub >  ',
                       spacing: 2.5,
                       wordSpacing: 5,
@@ -379,29 +380,6 @@ class _TabletHomepageState extends State<TabletHomepage> {
             ),
 
             const SizedBox(height: 50),
-
-            // Tools I Use Section
-            // const SizedBox(height: 20),
-            // Padding(
-            //   padding:
-            //       const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     children: [
-            //       Txt(
-            //         'Tools I Use to Do Magic',
-            //         size: 55,
-            //         spacing: 3,
-            //         weight: FontWeight.bold,
-            //         fontStyle: FontStyle.italic,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // VS Code
-            // Chrome
-            // All Powerful CLI
-            // Ubuntu
 
             // E-mail me section
             EmailSection(key: contactMeSectionKey),
@@ -589,7 +567,7 @@ class _EmailSectionState extends State<EmailSection> {
                 onTap: () {
                   RouterClass().launchURL('https://ye-lwin-oo.vercel.app/');
                 },
-                child: Txt(
+                child: const Txt(
                   'The design for this website was inspired by Ye Lwin Wo\'s portfolio website',
                   color: const Color(0x709E9E9E),
                   size: 11,
@@ -708,16 +686,6 @@ class ProjectTileWidget extends StatelessWidget {
                     spacing: 2,
                     weight: FontWeight.bold,
                   ),
-
-                  // desc
-                  // Txt(
-                  //   projectSet[index].desc,
-                  //   maxLines: 2,
-                  //   spacing: 1,
-                  //   overflow: TextOverflow.ellipsis,
-                  //   size: 15.78,
-                  //   align: TextAlign.right,
-                  // ),
 
                   // view project button
                   const SizedBox(height: 7.8),
@@ -908,7 +876,7 @@ class TerminalWindow extends StatelessWidget {
 }
 
 class BigCircle extends StatefulWidget {
-  BigCircle({super.key});
+  const BigCircle({super.key});
 
   @override
   State<BigCircle> createState() => _BigCircleState();

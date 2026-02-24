@@ -94,31 +94,32 @@ class _MobileHomepageState extends State<MobileHomepage> {
                           ),
                           // about
                           const CustomAnimatedText(
-                            'Flutter Developer,',
+                            'AI & ML Developer',
                             size: 20,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
                           const CustomAnimatedText(
-                            'AI & ML Enthusiast',
+                            'Flutter Developer,',
                             size: 20,
                             spacing: 2,
                             weight: FontWeight.bold,
                           ),
+
                           // interests
                           const SizedBox(height: 15),
                           const Txt(
-                            '~ passionate mobile app developer',
+                            '~ AI / ML enthusiast',
                             spacing: 2,
                             size: 14,
                           ),
                           const Txt(
-                            '~ avid reader',
+                            '~ mobile app developer',
                             spacing: 2,
                             size: 14,
                           ),
                           const Txt(
-                            '~ tech enthusiast',
+                            '~ solving problems with code',
                             spacing: 2,
                             size: 14,
                           ),
