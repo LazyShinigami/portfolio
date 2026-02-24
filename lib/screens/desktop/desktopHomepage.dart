@@ -213,7 +213,7 @@ class _DesktopHomepageState extends State<DesktopHomepage> {
                                 child: InkWell(
                                   onTap: () {
                                     const filePath =
-                                        'assets/resume/Ritesh_Kumar_Resume.pdf';
+                                        'assets/assets/resume/Ritesh_Kumar_Resume.pdf';
 
                                     // Open in a new browser tab
                                     html.window.open(filePath, '_blank');

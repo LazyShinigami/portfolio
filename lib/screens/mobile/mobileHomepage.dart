@@ -214,7 +214,7 @@ class _MobileHomepageState extends State<MobileHomepage> {
                               child: InkWell(
                                 onTap: () async {
                                   const filePath =
-                                      'assets/resume/Ritesh_Kumar_Resume.pdf';
+                                      'assets/assets/resume/Ritesh_Kumar_Resume.pdf';
 
                                   // Open in a new browser tab
                                   html.window.open(filePath, '_blank');
