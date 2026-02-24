@@ -72,7 +72,7 @@ class ProjectsManager {
           'Created an employee churn neural network from scratch, no Tensorflow or PyTorch - just math and logic',
       githubLink:
           'https://github.com/LazyShinigami/Machine-Learning-30-Days/blob/main/Day%207/Employe%20Churn%20-%20Neural%20Network.ipynb',
-      projectIconURL: 'assets/projects/EmployeeChurn.jpeg',
+      projectIconURL: 'assets/projects/EmployeeChurn.png',
       toolsUsed: [
         'Python',
         'NumPy',

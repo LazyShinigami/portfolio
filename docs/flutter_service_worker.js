@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "5a0ad7cb4d9d911d59df81dc0fe18852",
-"assets/AssetManifest.bin.json": "e6b360c53bf9ad0d59df917bfdaf47f5",
+const RESOURCES = {"assets/AssetManifest.bin": "5a312a4f7080d55295cc6569e09ec576",
+"assets/AssetManifest.bin.json": "6fdc09a5c4c4eaed6ee54e6bce5025cd",
 "assets/assets/cpu.png": "48f2f4ce7ef792541f567bd1f21e362d",
 "assets/assets/cross.webp": "426a8dabbc62fb8aa2d19fa32696fee3",
 "assets/assets/fonts/ComicNeue-Bold.ttf": "a4a97c1734d258d067bba8e9c85c4550",
@@ -12,7 +12,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "5a0ad7cb4d9d911d59df81dc0fe18852
 "assets/assets/link.png": "3d88fd5ecb69ff89ffac3ea2a90fb2d5",
 "assets/assets/newBG.png": "f4e47e87462e9651e1271c9a87e205e7",
 "assets/assets/platform.png": "fa3c1905699022e9622442cf4f7df3a9",
-"assets/assets/projects/EmployeeChurn.jpeg": "7ef0c257be9ab7feb21e2a09f82b6e31",
+"assets/assets/projects/EmployeeChurn.png": "39c8a98bdc2492d0671357f9eb4afb90",
 "assets/assets/projects/EmployeeChurn_illt.png": "d8ed21e1783a314b0306ee4ce504563d",
 "assets/assets/projects/KickFlip.png": "26c98400d7212b287a673fcc65cb3d68",
 "assets/assets/projects/KickFlip_illt.png": "8dbe42edf8711649058e12e8d26c218f",
@@ -46,14 +46,14 @@ const RESOURCES = {"assets/AssetManifest.bin": "5a0ad7cb4d9d911d59df81dc0fe18852
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.jpg": "64a8c55258ca6f254df130f513106a6d",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "1876a7d60d66061aede918f5aac2833e",
+"flutter_bootstrap.js": "f9fe0eda036d878bf45c278e2747f004",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "index.html": "0dcbd565d953bbe68f47ea4d110dd527",
 "/": "0dcbd565d953bbe68f47ea4d110dd527",
-"main.dart.js": "7a06b08ee9c2ed79f7661b5f01417142",
+"main.dart.js": "884ec5c96030474c72748b3230f99e40",
 "manifest.json": "e74af8957b5899dc6da961caee768ec9",
 "Ritesh_Kumar_Resume.pdf": "9a1d9f1e3de72ce8eb97424eaea010c6",
 "version.json": "0325640b78b9f97959290dc5ebb8b3ed"};
