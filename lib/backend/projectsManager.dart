@@ -30,7 +30,7 @@ class ProjectsManager {
       ],
       rotateIcon: true,
       projectIlltURL: 'assets/projects/MNIST_illt.png',
-      evaluation: ['Recall: 1.00', 'ROC-AUC: 1.00', 'Accuracy: ~75%'],
+      evaluation: ['Test Set: 10,000 images', 'Accuracy: 99.12%'],
     ),
     ProjectModel(
       name: 'Pneumonia Detection CNN',
@@ -89,6 +89,7 @@ class ProjectsManager {
       ],
       rotateIcon: true,
       projectIlltURL: 'assets/projects/EmployeeChurn_illt.png',
+      evaluation: ['Record Count: 5000', 'Accuracy: 93.72%'],
     ),
   ];
 }
